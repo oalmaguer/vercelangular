@@ -35,8 +35,15 @@ export class GorillazService {
   }
 
   getAuth() {
+    // let params = {
+    //   grant_type: 'client_credentials',
+    // };
     return this.http
-      .get(`${this.baseUrl}/spotify_token`)
+      .post(`${this.baseUrl}/spotify_token`, {
+        params: {
+          grant_type: 'client_credentials',
+        },
+      })
       .subscribe((elem: any) => {
         this.token.next(elem);
         this.setSearchValue(true);

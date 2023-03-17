@@ -1,7 +1,7 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import axios from 'Axios';
+import axios from 'axios';
 
 @Injectable({
   providedIn: 'root',

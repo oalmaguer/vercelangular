@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GorillazService } from '../gorillaz-service.service';
-import axios from 'Axios';
+import axios from 'axios';
 
 @Component({
   selector: 'app-searchsong',

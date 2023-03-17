@@ -23,6 +23,7 @@ export class GorillazService {
   public selectedSong$ = this.selectedSong.asObservable();
 
   baseUrl = 'https://vercelback-qmh9gzpqj-oalmaguer.vercel.app';
+  // baseUrl = 'http://localhost:3000';
   host = window.location.origin;
   constructor(private http: HttpClient) {}
 
@@ -35,14 +36,9 @@ export class GorillazService {
   }
 
   getAuth() {
-    // let params = {
-    //   grant_type: 'client_credentials',
-    // };
     return this.http
       .post(`${this.baseUrl}/spotify_token`, {
-        params: {
-          grant_type: 'client_credentials',
-        },
+        grant_type: 'client_credentials',
       })
       .subscribe((elem: any) => {
         this.token.next(elem);

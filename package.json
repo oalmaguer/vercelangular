@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "ng": "ng",
-    "start": "nodemon server.js",
+    "start": "ng build && nodemon server.js",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"

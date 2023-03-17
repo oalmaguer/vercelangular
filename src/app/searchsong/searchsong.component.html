@@ -1,0 +1,29 @@
+<div class="main-container">
+  <h1>AI Dj</h1>
+  <p style="font-size: 1.4rem">
+    Just write the name of the song you love and AI will give you song
+    recommendations based on your input
+  </p>
+  <!-- <input placeholder="Search a song!" #banda type="text" name="" id="" /> -->
+  <!-- <button (click)="getSongs(banda.value)">Testear API</button>
+            <p *ngFor="let item of songlist">
+                {{ item }}
+            </p> -->
+  <input placeholder="Song" #song type="text" name="" id="" />
+  <input placeholder="Artist" #artist type="text" name="" id="" />
+  <!-- <img src="assets/images/spotify.png" width="100px" /> -->
+  <button
+    class="button-33"
+    type="button"
+    (click)="getSongs(song.value, artist.value)"
+    [disabled]="false"
+  >
+    Find songs!
+  </button>
+
+  <div *ngIf="hasSongs; else nosongs"></div>
+
+  <ng-template #nosongs>
+    <h2>There's been an error, try another song</h2>
+  </ng-template>
+</div>

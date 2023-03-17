@@ -1,4 +1,12 @@
+import {
+  HttpClient,
+  HttpClientModule,
+  HttpHeaders,
+  HttpParams,
+} from '@angular/common/http';
 import { Component } from '@angular/core';
+import { Buffer } from 'buffer';
+import { GorillazService } from './gorillaz-service.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +14,36 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'angular-test';
+  constructor(
+    private gorillazService: GorillazService,
+    private httpClient: HttpClient
+  ) {}
+
+  title = 'gorillaz';
+  artist: any = '' as any;
+  songlist: any;
+  openSpotifyUrl: any;
+
+  songArray: any;
+  songObj: any = [];
+  hasSongs: boolean = false;
+  public showLoading: boolean;
+
+  client_id = '03ad1240808a45419787e101181f7c6a';
+  client_secret = '39b9e196a1ca4d9db13bf023d76ca3cd';
+
+  AUTHORIZE = 'https://developer.spotify.com/authorize';
+  showSearch: boolean;
+
+  noSongs: any = false;
+
+  ngOnInit() {
+    this.gorillazService.getSearchValue().subscribe((elem) => {
+      this.showSearch = elem;
+    });
+
+    this.gorillazService.getLoading().subscribe((elem) => {
+      this.showLoading = elem;
+    });
+  }
 }

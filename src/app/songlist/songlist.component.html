@@ -1,0 +1,19 @@
+<div class="card-container">
+  <div
+    *ngFor="let song of songObj; let i = index"
+    (click)="selectSong(song, i)"
+    class="card"
+    [class.active]="selectedIndex === i"
+  >
+    <div class="image-container">
+      <img src="{{ song.images[0].url }}" />
+    </div>
+    <div class="words-container">
+      <h3>{{ song.artist }}</h3>
+      <p class="top-border">{{ song.songName }}</p>
+      <a class="spotify" target="__blank" href="{{ song.songLink }}">
+        <img src="assets/images/spotify.png" style="width: 32px" />
+      </a>
+    </div>
+  </div>
+</div>

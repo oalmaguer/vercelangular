@@ -1,12 +1,18 @@
-.header-content {
+.header-container {
     display: flex;
-    justify-content: space-between;
-    background-color: lightgray;
-    padding: 2rem;
+    gap: 1rem;
     align-items: center;
+    justify-content: center;
+    padding: 2rem 0rem 2rem 0rem;
+    margin-left: 20%;
+    margin-right: 20%;
 }
 
-.menu-list {
+
+.header-container h1 {
+}
+
+.routes {
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem;
 }

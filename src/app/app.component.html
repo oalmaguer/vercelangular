@@ -1,3 +1,20 @@
 <div class="container">
   <app-header></app-header>
+  <app-searchsong *ngIf="showSearch"></app-searchsong>
+  <span *ngIf="showLoading" class="loader"></span>
+  <div *ngIf="!showSearch" class="songs-container">
+    <div class="songlist-container">
+      <app-songlist></app-songlist>
+    </div>
+    <div class="songview-container">
+      <app-songview></app-songview>
+    </div>
+  </div>
+
+  <!-- <a target="__blank" href="artist.tracks.items[0].preview_url">{{
+    artist.tracks.items[0].preview_url
+  }}</a>
+  <a target="__blank" href="artist.tracks.items[0].href">{{
+    artist.tracks.items[0].href
+  }}</a> -->
 </div>

@@ -10,7 +10,10 @@ Deploy your own Angular project with Vercel.
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/vercel/tree/main/examples/angular&template=angular)
 
-_Live Example: https://angular-template.vercel.app_
+<!-- _Live Example: https://angular-template.vercel.app_
+ -->
+
+\_Live App: https://vercelangular-eight.vercel.app/
 
 ## Development server
 

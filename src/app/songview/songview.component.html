@@ -1,0 +1,16 @@
+<div class="wrapper spotify">
+  <div class="image-container">
+    <img src="{{ selectedSong.images[0].url }}" alt="" />
+  </div>
+
+  <div class="image-info">
+    <h2>{{ selectedSong.artist }}</h2>
+    <p>{{ selectedSong.songName }}</p>
+    <div class="play-song">
+      <audio controls src="{{ selectedSong.previewUrl }}"></audio>
+      <!-- <audio controls>
+          <source src="{{ selectedSong.previewUrl }}" />
+        </audio> -->
+    </div>
+  </div>
+</div>

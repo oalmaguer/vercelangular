@@ -1,0 +1,41 @@
+img {
+    height: 30rem;
+    width: 100%;
+    border-radius: 7px;
+}
+
+.image-info {
+    display: flex;
+    flex-direction: column;
+    background-color: #151515;
+    min-height: 150px;
+    border-radius: 7px;
+    gap: 1rem;
+    padding: 1.5rem 1.5rem .5rem 1.5rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-top: auto;
+    position: relative;
+    bottom: 10px;
+    
+}
+
+.image-info button {
+    width: 30%;
+    padding: .5rem;
+    margin-bottom: auto;
+
+}
+
+.wrapper {
+    position: sticky;
+    top: 7rem;
+}
+
+@media screen and (max-width: 600px) {
+    .words-container {
+        font-size: 12px;
+    }
+    .spotify {
+        display: none;
+    }
+  }

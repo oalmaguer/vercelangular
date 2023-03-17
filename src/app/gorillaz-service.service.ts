@@ -22,13 +22,13 @@ export class GorillazService {
   public selectedSong = new BehaviorSubject('');
   public selectedSong$ = this.selectedSong.asObservable();
 
-  baseUrl = 'http://localhost:3000';
+  baseUrl = 'https://vercelback-qmh9gzpqj-oalmaguer.vercel.app';
   host = window.location.origin;
   constructor(private http: HttpClient) {}
 
   getSongs(song: string, artist: string) {
     console.log('llega servicio: ', song);
-    return this.http.post(`${this.host}/songs`, {
+    return this.http.post(`${this.baseUrl}/songs`, {
       song: song,
       artist: artist,
     });
@@ -36,7 +36,7 @@ export class GorillazService {
 
   getAuth() {
     return this.http
-      .get(`${this.host}/spotify_token`)
+      .get(`${this.baseUrl}/spotify_token`)
       .subscribe((elem: any) => {
         this.token.next(elem);
         this.setSearchValue(true);

@@ -83,6 +83,9 @@ app.post('spotify_token', async(req, res) => {
 
 app.use(express.static(distDir));
 console.log(distDir);
+app.get("/", (req, res) => {
+    res.send("Pagina inicio");
+})
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`)

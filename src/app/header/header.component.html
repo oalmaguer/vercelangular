@@ -1,18 +1,57 @@
 <div class="header-container">
-  <div class="img">
-    <img src="assets/images/dj.png" style="width: 64px" />
+  <div class="full-menu">
+    <div class="img">
+      <img src="assets/images/dj.png" style="width: 64px" />
+    </div>
+    <div class="routes">
+      <a (click)="resetSearch()" style="cursor: pointer">Search</a>
+      <a
+        class="coffee"
+        href="https://www.buymeacoffee.com/mrtembo"
+        target="__blank"
+      >
+        <img src="/assets/images/coffee.png/" />
+      </a>
+      <a href="https://www.linkedin.com/in/oliveralmaguer/" target="__blank"
+        >Linkedin</a
+      >
+    </div>
   </div>
-  <div class="routes">
-    <a (click)="resetSearch()">Search</a>
-    <a
-      class="coffee"
-      href="https://www.buymeacoffee.com/mrtembo"
-      target="__blank"
-    >
-      <img src="/assets/images/coffee.png/" />
+
+  <div *ngIf="isMobile" class="menu-btn">
+    <a (click)="openSidebar()">
+      <img
+        src="assets/images/menu.png"
+        style="width: 32px; filter: invert(1); padding: 0.3rem"
+        [ngClass]="{ 'open-menu': isSidebarActive }"
+      />
     </a>
-    <a href="https://www.linkedin.com/in/oliveralmaguer/" target="__blank"
-      >Linkedin</a
-    >
   </div>
+
+  <aside *ngIf="true">
+    <div class="sidebar" [ngClass]="{ 'sidebar-active': isSidebarActive }">
+      <div class="logo">
+        <a (click)="resetSearch()" style="cursor: pointer">
+          <img src="assets/images/dj.png" style="width: 32px" />
+        </a>
+      </div>
+      <ul class="links">
+        <li><a (click)="resetSearch()" style="cursor: pointer">Search</a></li>
+        <li>
+          <a href="https://www.buymeacoffee.com/mrtembo" target="__blank"
+            >Buy me a coffee</a
+          >
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/oliveralmaguer/" target="__blank"
+            >Linkedin</a
+          >
+        </li>
+      </ul>
+      <!-- <div class="search">
+        <input type="text" placeholder="Search..." />
+        <button>Go</button>
+      </div> -->
+    </div>
+  </aside>
 </div>

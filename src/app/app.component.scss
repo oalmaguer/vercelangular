@@ -48,4 +48,29 @@
     0% {  left: 0; transform: translateX(0%); }
     100% {  left: 100%; transform: translateX(-100%); }
   }
+
+  .coffee {
+    position: absolute;
+    left: calc(100% -  150px);
+    top: 87%;
+    background-color: whitesmoke;
+    border-radius: 78%;
+    padding: .5rem;
+}
+
+.coffee img {
+    width: 64px;
+
+}
+
+@media screen and (max-width: 600px) {
+    .coffee {
+      left: 40% !important;
+      display: none;
+    }
+
+    .menu-btn {
+        display: flex !important;
+    }
+  }
   

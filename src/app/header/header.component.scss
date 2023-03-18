@@ -26,22 +26,7 @@ a:hover {
    color: whitesmoke;
 }
 
-.coffee {
-    position: absolute;
-    left: 88%;
-    top: 85%;
-}
-
-.coffee img {
-    width: 100px;
-
-}
-
 @media screen and (max-width: 600px) {
-    .coffee {
-      left: 40% !important;
-    }
-
     .menu-btn {
         display: flex !important;
     }

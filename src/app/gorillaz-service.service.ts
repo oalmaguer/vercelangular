@@ -22,8 +22,9 @@ export class GorillazService {
   public selectedSong = new BehaviorSubject('');
   public selectedSong$ = this.selectedSong.asObservable();
 
-  baseUrl = 'https://vercelback-qmh9gzpqj-oalmaguer.vercel.app';
+  // baseUrl = 'https://vercelback-qmh9gzpqj-oalmaguer.vercel.app';
   // baseUrl = 'http://localhost:3000';
+  baseUrl = 'https://vercelback-czsntz2bk-oalmaguer.vercel.app';
   host = window.location.origin;
   constructor(private http: HttpClient) {}
 
@@ -36,11 +37,12 @@ export class GorillazService {
   }
 
   getAuth() {
-    return this.http
+    this.http
       .post(`${this.baseUrl}/spotify_token`, {
         grant_type: 'client_credentials',
       })
       .subscribe((elem: any) => {
+        console.log(elem);
         this.token.next(elem);
         this.setSearchValue(true);
       });

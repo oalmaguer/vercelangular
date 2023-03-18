@@ -6,13 +6,38 @@
     padding: 2rem 0rem 2rem 0rem;
     margin-left: 20%;
     margin-right: 20%;
+    font-size: 1.5rem;
 }
 
-
-.header-container h1 {
-}
 
 .routes {
     display: flex;
     gap: 1.5rem;
 }
+
+a {
+    color: #3c98e5;
+    text-decoration: none;
+    transition: .5s;
+}
+
+a:hover {
+   color: whitesmoke;
+}
+
+.coffee {
+    position: absolute;
+    left: 88%;
+    top: 85%;
+}
+
+.coffee img {
+    width: 100px;
+
+}
+
+@media screen and (max-width: 600px) {
+    .coffee {
+      left: 40% !important;
+    }
+  }

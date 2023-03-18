@@ -24,7 +24,7 @@
     
 }
 
-.image-container img {
+.diskImage {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
@@ -68,7 +68,7 @@
         font-size: 12px;
     }
     .spotify {
-        display: none;
+        // display: none;
     }
 
     .card {
@@ -81,7 +81,7 @@
         font-size: 12px;
     }
     .spotify {
-        display: none;
+        // display: none;
     }
 
     .card {
@@ -102,4 +102,29 @@
 .words-container a {
     text-decoration: none;
     color: whitesmoke;
+}
+
+.image-container {
+    position: relative;
+    display: flex;
+}
+
+#playAudio {
+    width: 48px;
+    /* display: flex; */
+    position: absolute;
+    left: 35%;
+    bottom: 35%;
+    border-radius: 9px;
+    filter: hue-rotate(48deg);
+    transition: transform .1s;
+}
+
+#playAudio:hover {
+    // filter: drop-shadow(2px 4px 6px black);
+    transform: scale(1.2);
+}
+
+.isPlaying {
+    filter: hue-rotate(323deg) !important;
 }

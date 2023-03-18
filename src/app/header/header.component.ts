@@ -1,8 +1,15 @@
 import { Component } from '@angular/core';
+import { GorillazService } from '../gorillaz-service.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+  constructor(private gorillazService: GorillazService) {}
+
+  public resetSearch() {
+    this.gorillazService.setSearchValue(true);
+  }
+}

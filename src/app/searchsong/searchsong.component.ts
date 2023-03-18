@@ -25,8 +25,6 @@ export class SearchsongComponent implements OnInit {
   }
 
   getSongs(song: string, artist: string) {
-    console.log('si');
-    console.log(this.gorillazService.getLoading());
     if (!this.gorillazService.getLoading()) return;
     this.gorillazService.setLoading(true);
     this.songObj.length = 0;
@@ -42,38 +40,33 @@ export class SearchsongComponent implements OnInit {
       // let str = this.songlist.split('\n');
       // this.songlist = str;
       this.noSongs = false;
-      console.log(this.songlist);
       this.searchSongs(this.songlist);
     });
+  }
+
+  error(error: any) {
+    this.hasSongs = false;
+    this.gorillazService.setLoading(false);
   }
 
   async searchSongs(songs: any) {
     this.hasSongs = true;
 
-    // this.songArray = songs.filter((elem) => elem != '');
     let jsonSongs;
     let jsonSongs2;
-    // try {
-    // } catch (e) {
-    //   console.log('Errorsao: ', e);
-    //   return;
-    // }
+
     let newjs;
+    jsonSongs2 = JSON.stringify(songs.trim());
+    jsonSongs = JSON.parse(jsonSongs2);
+    this.hasSongs = true;
+
     try {
-      jsonSongs2 = JSON.stringify(songs.trim());
-      jsonSongs = JSON.parse(jsonSongs2);
-      this.hasSongs = true;
+      newjs = JSON.parse(jsonSongs);
     } catch (e) {
-      this.hasSongs = false;
-      this.gorillazService.setLoading(false);
-      console.log('Errorsao: ', e);
-      console.log('hasta aqui');
+      this.error(e);
       return;
     }
-    console.log();
-    newjs = JSON.parse(jsonSongs);
-    console.log(newjs);
-    console.log(newjs.data);
+
     await Promise.all(
       newjs.data.map((elem) => {
         let url = 'https://api.spotify.com/v1/search';

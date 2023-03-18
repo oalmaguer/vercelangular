@@ -6,7 +6,21 @@
     [class.active]="selectedIndex === i"
   >
     <div class="image-container">
-      <img src="{{ song.images[0].url }}" />
+      <audio
+        id="audioSong{{ i }}"
+        hidden
+        controls
+        src="{{ song.previewUrl }}"
+      ></audio>
+      <img
+        (click)="playSong(song, i)"
+        src="assets/images/play-button.png"
+        id="playAudio"
+        [class.isPlaying]="playIndex === i"
+      />
+      <!-- <button (click)="playSong()" id="playAudio">
+      </button> -->
+      <img src="{{ song.images[0].url }}" class="diskImage" />
     </div>
     <div class="words-container">
       <h3>{{ song.artist }}</h3>

@@ -1,7 +1,7 @@
 <div class="container">
   <app-header></app-header>
   <app-searchsong *ngIf="showSearch"></app-searchsong>
-  <span *ngIf="showLoading" class="loader"></span>
+  <div *ngIf="showLoading" class="loader"></div>
   <div *ngIf="!showSearch" class="songs-container">
     <div class="songlist-container">
       <app-songlist></app-songlist>

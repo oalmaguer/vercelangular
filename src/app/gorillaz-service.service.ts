@@ -24,12 +24,10 @@ export class GorillazService {
 
   // baseUrl = 'https://vercelback-qmh9gzpqj-oalmaguer.vercel.app';
   // baseUrl = 'http://localhost:3000';
-  baseUrl = 'https://vercelback-czsntz2bk-oalmaguer.vercel.app';
-  host = window.location.origin;
+  baseUrl = 'https://vercelback-iota.vercel.app/';
   constructor(private http: HttpClient) {}
 
   getSongs(song: string, artist: string) {
-    console.log('llega servicio: ', song);
     return this.http.post(`${this.baseUrl}/songs`, {
       song: song,
       artist: artist,
@@ -42,7 +40,6 @@ export class GorillazService {
         grant_type: 'client_credentials',
       })
       .subscribe((elem: any) => {
-        console.log(elem);
         this.token.next(elem);
         this.setSearchValue(true);
       });
@@ -53,10 +50,15 @@ export class GorillazService {
   }
 
   public setSongList(data: any) {
-    console.log('Song list: ', data);
-    if (data) this.setSearchValue(false);
-    this.songs.next(data);
-    this.setSelectedSong(data[0]);
+    if (data.length > 0) {
+      this.setSearchValue(false);
+      this.songs.next(data);
+      this.setSelectedSong(data[0]);
+    } else {
+      this.setSearchValue(false);
+      this.songs.next(data);
+      return;
+    }
   }
 
   public getSongList() {
@@ -85,5 +87,10 @@ export class GorillazService {
 
   public getSelectedSong() {
     return this.selectedSong$;
+  }
+
+  public resetSearch() {
+    this.setSongList([]);
+    this.setSelectedSong([]);
   }
 }

@@ -12,7 +12,6 @@ export class SongviewComponent implements OnInit {
 
   async ngOnInit() {
     await this.gorillazService.getSelectedSong().subscribe((elem) => {
-      console.log('selected: ', elem);
       if (elem) {
         this.selectedSong = elem;
       }

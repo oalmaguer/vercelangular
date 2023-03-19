@@ -1,4 +1,8 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpClientModule,
+  HttpErrorResponse,
+} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import axios from 'axios';
@@ -24,7 +28,7 @@ export class GorillazService {
 
   // baseUrl = 'https://vercelback-qmh9gzpqj-oalmaguer.vercel.app';
   // baseUrl = 'http://localhost:3000';
-  baseUrl = 'https://vercelback-kufl71l1p-oalmaguer.vercel.app';
+  baseUrl = 'https://vercelback-n0yshd2cr-oalmaguer.vercel.app';
   constructor(private http: HttpClient) {}
 
   getSongs(song: string, artist: string) {

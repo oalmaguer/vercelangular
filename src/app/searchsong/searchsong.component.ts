@@ -28,20 +28,23 @@ export class SearchsongComponent implements OnInit {
     if (!this.gorillazService.getLoading()) return;
     this.gorillazService.setLoading(true);
     this.songObj.length = 0;
-    this.gorillazService.getSongs(song, artist).subscribe((elem: any) => {
-      if (
-        elem.message.content.trim() == 'No' ||
-        elem.message.content.trim() == 'No.'
-      ) {
-        this.noSongs = true;
-        return;
-      }
-      this.songlist = elem.message.content;
-      // let str = this.songlist.split('\n');
-      // this.songlist = str;
-      this.noSongs = false;
-      this.searchSongs(this.songlist);
-    });
+    this.gorillazService.getSongs(song, artist).subscribe(
+      (elem: any) => {
+        if (
+          elem.message.content.trim() == 'No' ||
+          elem.message.content.trim() == 'No.'
+        ) {
+          this.noSongs = true;
+          return;
+        }
+        this.songlist = elem.message.content;
+        // let str = this.songlist.split('\n');
+        // this.songlist = str;
+        this.noSongs = false;
+        this.searchSongs(this.songlist);
+      },
+      (error) => this.error(error)
+    );
   }
 
   error(error: any) {

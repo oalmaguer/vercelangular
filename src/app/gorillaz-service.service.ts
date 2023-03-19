@@ -24,7 +24,7 @@ export class GorillazService {
 
   // baseUrl = 'https://vercelback-qmh9gzpqj-oalmaguer.vercel.app';
   // baseUrl = 'http://localhost:3000';
-  baseUrl = 'https://vercelback-1kknyoyr7-oalmaguer.vercel.app';
+  baseUrl = 'https://vercelback-kufl71l1p-oalmaguer.vercel.app';
   constructor(private http: HttpClient) {}
 
   getSongs(song: string, artist: string) {

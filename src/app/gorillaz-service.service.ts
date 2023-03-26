@@ -26,28 +26,50 @@ export class GorillazService {
   public selectedSong = new BehaviorSubject('');
   public selectedSong$ = this.selectedSong.asObservable();
 
+  public gifUrl = new BehaviorSubject('');
+  public gifUrl$ = this.gifUrl.asObservable();
+
   // baseUrl = 'https://vercelback-qmh9gzpqj-oalmaguer.vercel.app';
   // baseUrl = 'http://localhost:3000';
-  baseUrl = 'https://vercelback-l8c6rfmrb-oalmaguer.vercel.app';
+  baseUrl = 'https://vercelback-orns9ldbs-oalmaguer-s-team.vercel.app';
+  
   constructor(private http: HttpClient) {}
 
   getSongs(song: string, artist: string) {
     return this.http.post(`${this.baseUrl}/songs`, {
       song: song,
       artist: artist,
-    });
+    })
   }
 
   getAuth() {
     this.http
-      .post(`${this.baseUrl}/spotify_token`, {
-        grant_type: 'client_credentials',
-      })
+      .get(`${this.baseUrl}/spotify_token`)
       .subscribe((elem: any) => {
         this.token.next(elem);
         this.setSearchValue(true);
       });
   }
+
+  getGif() {
+    function getRandomIntInclusive(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min + 1) + min); // The maximum is inclusive and the minimum is inclusive
+    }
+
+    this.http
+      .get(`${this.baseUrl}/gif`, {
+      })
+      .subscribe((elem: any) => {
+        if (elem) {
+          let num = getRandomIntInclusive(0, 15);
+          console.log(num);
+          this.gifUrl.next(elem.data[getRandomIntInclusive(0, 15)].images.original.url);
+        }
+      });
+  }
+
 
   public getToken() {
     return this.token$;
@@ -83,6 +105,14 @@ export class GorillazService {
 
   public setLoading(data: any) {
     this.showLoading.next(data);
+  }
+
+  public getGifUrl() {
+    return this.gifUrl$;
+  }
+
+  public setGif(data: any) {
+    this.gifUrl.next(data);
   }
 
   public setSelectedSong(data: any) {

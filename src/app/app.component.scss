@@ -74,3 +74,15 @@
     }
   }
   
+
+  .gif {
+    color: whitesmoke;
+    font-size: 2rem;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    min-width: 300px;
+  }

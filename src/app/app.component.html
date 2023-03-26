@@ -2,6 +2,10 @@
   <app-header></app-header>
   <app-searchsong *ngIf="showSearch"></app-searchsong>
   <div *ngIf="showLoading" class="loader"></div>
+  <div *ngIf="showLoading" class="gif">
+    <h3>Be patient, the robots are thinking!</h3>
+    <img src="{{gif}}" />
+  </div>
   <div *ngIf="!showSearch" class="songs-container">
     <div class="songlist-container">
       <app-songlist></app-songlist>

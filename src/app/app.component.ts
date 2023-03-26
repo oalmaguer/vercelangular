@@ -35,16 +35,25 @@ export class AppComponent {
 
   AUTHORIZE = 'https://developer.spotify.com/authorize';
   showSearch: boolean;
-
+  gif: string = "dkepowkefo";
+  str;
   noSongs: any = false;
 
   ngOnInit() {
+    
+    
     this.gorillazService.getSearchValue().subscribe((elem) => {
       this.showSearch = elem;
     });
-
+    
     this.gorillazService.getLoading().subscribe((elem) => {
       this.showLoading = elem;
     });
+
+    this.gorillazService.getGif();
+
+    this.gorillazService.getGifUrl().subscribe(elem => {
+      this.gif = elem;
+    })
   }
 }

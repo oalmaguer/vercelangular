@@ -1,8 +1,9 @@
-img {
+.selectedSongImg {
     height: 30rem;
     width: 100%;
     border-radius: 7px;
 }
+
 
 .image-info {
     display: flex;
@@ -16,6 +17,7 @@ img {
     margin-top: auto;
     position: relative;
     bottom: 10px;
+    color: whitesmoke;
     
 }
 
@@ -29,6 +31,11 @@ img {
 .wrapper {
     position: sticky;
     top: 7rem;
+}
+
+.play-song {
+    display: flex;
+    gap: 1rem;
 }
 
 @media screen and (max-width: 600px) {

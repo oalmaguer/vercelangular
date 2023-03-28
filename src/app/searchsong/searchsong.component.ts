@@ -74,6 +74,7 @@ export class SearchsongComponent implements OnInit {
         let url = 'https://api.spotify.com/v1/search';
         let headers = { Authorization: 'Bearer ' + this.token };
         let query = `?q=${elem.song}&type=track&artist=${elem.artist}&limit=1`;
+        let ytLink = elem.youtubeLink;
         url = url + query;
         return axios
           .get(url, {
@@ -92,6 +93,7 @@ export class SearchsongComponent implements OnInit {
                 previewUrl: elem.data.tracks.items[0].preview_url,
                 images: elem.data.tracks.items[0].album.images,
                 artist: elem.data.tracks.items[0].artists[0].name,
+                youtubeLink: ytLink,
               },
             ];
             this.gorillazService.setSongList(this.songObj);

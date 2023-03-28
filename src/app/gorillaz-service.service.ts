@@ -36,7 +36,7 @@ export class GorillazService {
   constructor(private http: HttpClient) {}
 
   getSongs(song: string, artist: string) {
-    return this.http.post(`${this.baseUrl}/songs`, {
+    return this.http.post(`${this.baseUrl}/getSongs`, {
       song: song,
       artist: artist,
     })
@@ -64,10 +64,12 @@ export class GorillazService {
       .subscribe((elem: any) => {
         if (elem) {
           let num = getRandomIntInclusive(0, 15);
-          console.log(num);
           this.gifUrl.next(elem.data[getRandomIntInclusive(0, 15)].images.original.url);
         }
-      });
+      }), (error) => {
+        console.log(error);
+        this.getGif();
+      }
   }
 
 

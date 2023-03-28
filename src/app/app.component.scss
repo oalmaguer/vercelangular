@@ -50,16 +50,16 @@
   }
 
   .coffee {
-    position: absolute;
-    left: calc(100% -  150px);
-    top: 87%;
-    background-color: whitesmoke;
-    border-radius: 78%;
-    padding: .5rem;
+    position: fixed;
+    top: 88%;
+    left: calc(100% - 120px);
 }
 
 .coffee img {
+  background-color: whitesmoke;
     width: 64px;
+    border-radius: 40px;
+    padding: .4rem;
 
 }
 

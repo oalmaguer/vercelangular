@@ -15,13 +15,36 @@ export class SearchsongComponent implements OnInit {
 
   public songlist: any;
 
-  constructor(private gorillazService: GorillazService) {}
+  constructor(private gorillazService: GorillazService) { }
 
   async ngOnInit() {
     await this.gorillazService.getAuth();
     this.gorillazService.getToken().subscribe((elem) => {
       this.token = elem;
     });
+
+    console.log('%c Get out of here ', 'background: #222; color: #bada55');
+    console.log(`░░░░░░░░░▀█▄▄░░░░░░░░░░░░░░░░░░░░░░░░░░░
+    ░░░░▄▄▀▀▀▀▀▀░▀█▄░░░░░░░░░░░░░░░▄▄▄▄░░░░░
+    ░░░░██▀▀░░░░░░░▀█▄░░░░░░░░░▄▄▀▀░░██▄▄░░░
+    ░▄█▀░░░░░░░▀█▄░░░▀█░░░░░░▄█▀░░░░░░░░▀▀▄░
+    ██▄▄░░░░░▄▄░░▀░░░░░█▄░▄░█▀░░░▄▀░░░░▄▀▀▀░
+    ░░▄█▀░░░░░░▀░░░░░░░░████░░░░▀░░░░░░░▀▀▄░
+    ▄█▄▄░░░▀▀▄░░▄▄█▀▀▀▀▀▀█▄▀▀▀█▄▄░▄▀▀▀░░░▄▄█
+    ▀▀░▄▀░░░▄█▀▀█░░░░▄░░░░░▄▀▀▀█▀▀▄▄░░░██░░░
+    ░░▀▀▀▀▄▄▀█▄█▀░░█▀░░░░░░░▀▄█▀░░░▀▄██▀▀░░░
+    ░░░░░░░█▄▄░░░░░░▀▀░░░░░░░░░░░░▄▄█░░░░░░░
+    ░░░░░░░░░█▄▄░░░░░░░░░▄▄▄█░░░░▄█░░░░░░░░░
+    ░░░░░░░░░░░█▄▄░░░░░░░░░░░░░░▄█░░░░░░░░░░
+    ░░░░░░░░░░░░▀▀▀▀█░░░▄▄▄███▀▀▀░░░░░░░░░░░
+    ░░░░░░░░░░▄▄▄▄▀██▄▄▄██▄▄▄░░░░░░░░░░░░░░░
+    ░░░░░░░░▄▀░▄▄█▀░░░░░░▄▄▄░▀█▄░░░░░░░░░░░░
+    ░░░░░░░░█░░██░░░░░░░░█░░█░░▀█░░░░░░░░░░░
+    ░░░░░░░░██▄██░░░░░░░░█▄▄▀▄▄█▀░░░░░░░░░░░
+    ░░░░░░░░░░███░░░░░░░░███▀░░░░░░░░░░░░░░░
+    ░░░░░░░░░░░▀███▄▄████▀░░░░░░░░░░░░░░░░░░
+    ░░░░░░░░░░░░█████████░░░░░░░░░░░░░░░░░░░
+    ░░░░░░░░░░░░███░░░███░░░░░░░░░░░░░░░░░░░`);
   }
 
   getSongs(song: string, artist: string) {
@@ -30,16 +53,7 @@ export class SearchsongComponent implements OnInit {
     this.songObj.length = 0;
     this.gorillazService.getSongs(song, artist).subscribe(
       (elem: any) => {
-        if (
-          elem.message.content.trim() == 'No' ||
-          elem.message.content.trim() == 'No.'
-        ) {
-          this.noSongs = true;
-          return;
-        }
-        this.songlist = elem.message.content;
-        // let str = this.songlist.split('\n');
-        // this.songlist = str;
+        this.songlist = elem;
         this.noSongs = false;
         this.searchSongs(this.songlist);
       },
@@ -48,33 +62,18 @@ export class SearchsongComponent implements OnInit {
   }
 
   error(error: any) {
+    console.log(error);
     this.hasSongs = false;
     this.gorillazService.setLoading(false);
   }
 
   async searchSongs(songs: any) {
     this.hasSongs = true;
-
-    let jsonSongs;
-    let jsonSongs2;
-
-    let newjs;
-    jsonSongs2 = JSON.stringify(songs.trim());
-    jsonSongs = JSON.parse(jsonSongs2);
-    this.hasSongs = true;
-
-    try {
-      newjs = JSON.parse(jsonSongs);
-    } catch (e) {
-      this.error(e);
-      return;
-    }
-
     await Promise.all(
-      newjs.data.map((elem) => {
+      JSON.parse(songs).map((elem) => {
         let url = 'https://api.spotify.com/v1/search';
         let headers = { Authorization: 'Bearer ' + this.token };
-        let query = `?q=${elem.songName}&type=track&artist=${elem.songArtist}&limit=1`;
+        let query = `?q=${elem.song}&type=track&artist=${elem.artist}&limit=1`;
         url = url + query;
         return axios
           .get(url, {

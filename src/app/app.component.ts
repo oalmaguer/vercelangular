@@ -30,9 +30,6 @@ export class AppComponent {
   public showLoading: boolean;
   public isMobile: boolean = true;
 
-  client_id = '03ad1240808a45419787e101181f7c6a';
-  client_secret = '39b9e196a1ca4d9db13bf023d76ca3cd';
-
   AUTHORIZE = 'https://developer.spotify.com/authorize';
   showSearch: boolean;
   gif: string = "dkepowkefo";

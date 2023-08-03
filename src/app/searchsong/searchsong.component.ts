@@ -15,7 +15,7 @@ export class SearchsongComponent implements OnInit {
 
   public songlist: any;
 
-  constructor(private gorillazService: GorillazService) { }
+  constructor(private gorillazService: GorillazService) {}
 
   async ngOnInit() {
     await this.gorillazService.getAuth();
@@ -67,10 +67,18 @@ export class SearchsongComponent implements OnInit {
     this.gorillazService.setLoading(false);
   }
 
+  extractJSON(inputString) {
+    const songsStartIndex = inputString.indexOf('[');
+    const songsEndIndex = inputString.lastIndexOf(']') + 1;
+    const songsArrayString = inputString.slice(songsStartIndex, songsEndIndex);
+    return songsArrayString;
+  }
+
   async searchSongs(songs: any) {
+    const songs2 = this.extractJSON(songs);
     this.hasSongs = true;
     await Promise.all(
-      JSON.parse(songs).map((elem) => {
+      JSON.parse(songs2).map((elem) => {
         let url = 'https://api.spotify.com/v1/search';
         let headers = { Authorization: 'Bearer ' + this.token };
         let query = `?q=${elem.song}&type=track&artist=${elem.artist}&limit=1`;

@@ -32,23 +32,21 @@ export class GorillazService {
   // baseUrl = 'https://vercelback-qmh9gzpqj-oalmaguer.vercel.app';
   // baseUrl = 'http://localhost:3000';
   baseUrl = 'https://vercelback-iota.vercel.app';
-  
+
   constructor(private http: HttpClient) {}
 
   getSongs(song: string, artist: string) {
     return this.http.post(`${this.baseUrl}/getSongs`, {
       song: song,
       artist: artist,
-    })
+    });
   }
 
   getAuth() {
-    this.http
-      .get(`${this.baseUrl}/spotify_token`)
-      .subscribe((elem: any) => {
-        this.token.next(elem);
-        this.setSearchValue(true);
-      });
+    this.http.get(`${this.baseUrl}/spotify_token`).subscribe((elem: any) => {
+      this.token.next(elem);
+      this.setSearchValue(true);
+    });
   }
 
   getGif() {
@@ -58,20 +56,19 @@ export class GorillazService {
       return Math.floor(Math.random() * (max - min + 1) + min); // The maximum is inclusive and the minimum is inclusive
     }
 
-    this.http
-      .get(`${this.baseUrl}/gif`, {
-      })
-      .subscribe((elem: any) => {
-        if (elem) {
-          let num = getRandomIntInclusive(0, 15);
-          this.gifUrl.next(elem.data[getRandomIntInclusive(0, 15)].images.original.url);
-        }
-      }), (error) => {
+    this.http.get(`${this.baseUrl}/gif`, {}).subscribe((elem: any) => {
+      if (elem) {
+        let num = getRandomIntInclusive(0, 15);
+        this.gifUrl.next(
+          elem.data[getRandomIntInclusive(0, 15)].images.original.url
+        );
+      }
+    }),
+      (error) => {
         console.log(error);
         this.getGif();
-      }
+      };
   }
-
 
   public getToken() {
     return this.token$;
